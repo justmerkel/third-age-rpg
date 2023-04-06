@@ -5,9 +5,13 @@
 \usepackage[many]{tcolorbox}
 \usepackage{lipsum}
 \usepackage{setspace}
-\usepackage{float}
+%\usepackage{float}
 \usepackage{booktabs}
 \usepackage{listings}
+\usepackage{tabularx}
+\usepackage{array}
+\newcolumntype{P}[1]{>{\centering\arraybackslash}p{#1}}
+\newcolumntype{Y}{>{\centering\arraybackslash}X}
 \usepackage{xcolor,colortbl}
 \usepackage[a4paper, margin=0.5in,footskip=0.5in, bottom=1in]{geometry}
 \tcbuselibrary{listings,breakable}
@@ -42,6 +46,9 @@
   }
 }
 
+\usepackage{floatrow}
+\DeclareFloatFont{sans}{\sffamily \centering}% "scriptsize" is defined by floatrow, "tiny" not
+\floatsetup[table]{font=sans}
 
 \newtcolorbox{mercHeading}{
   width=\columnwidth,
@@ -55,6 +62,17 @@ boxsep=5pt,left=0pt,right=0pt,top=0pt,bottom=0pt,
   colupper = black
 }
 
+\newtcolorbox{mercClassInfo}{
+  width=\columnwidth,
+  fontupper = \large \sffamily,
+  colback={greg},
+boxsep=5pt,left=0pt,right=0pt,top=0pt,bottom=0pt,
+  frame hidden,
+  boxrule =0pt,
+  arc = 0mm,
+  outer arc =0mm,
+  colupper = black
+}
 
 
 
@@ -82,6 +100,7 @@ boxsep=5pt,left=0pt,right=0pt,top=0pt,bottom=0pt,
  \pagenumbering{arabic}
 \section*{Introduction}
 \addcontentsline{toc}{section}{Introduction}
+
 \subsection*{Design Goals}
 \begin{itemize}
 	\item Maintain compatibility and tone from Old-school material.
@@ -91,7 +110,9 @@ boxsep=5pt,left=0pt,right=0pt,top=0pt,bottom=0pt,
 %%%%%%%%%%%Begin Actual Content%%%%%%%%%%%%%%%
 \begin{multicols}{2}
 \section*{Character}
+\addcontentsline{toc}{section}{Character}
 \subsection*{Attributes}
+\addcontentsline{toc}{subsection}{Attributes}
 The Third Age RPG uses 5 main stats that define a character's strengths and weaknesses ranging from -3 to +3. 
 
 \begin{mercHeading}
@@ -144,7 +165,7 @@ Dexterity
 \begin{itemize}
 \setlength\itemsep{0em}
 	\item \textbf{Armor Class:} Increase Armor Class (AC) by Dexterity
-	\item \textbf{Ranged Attack Bonus:} Increases to-hit of ranged attack by Dexterity
+	\item \textbf{Ranged Attack Bonus:} Increases to-hit of ranged attacks by Dexterity
 \end{itemize}
 The measure of deftness and agility. The primary attribute of Thieves
 
@@ -188,6 +209,7 @@ Roll Result} &\textbf{ Bonus}\\
 \end{table}
 
 \section*{Class}
+\addcontentsline{toc}{section}{Class}
 \subsection*{Class List}
 \begin{itemize}
 	\item Magic-User
@@ -199,37 +221,64 @@ Roll Result} &\textbf{ Bonus}\\
 \section*{Thief}
 \section*{Fighting-Man}
 \section*{Magic-User}
+\addcontentsline{toc}{section}{Magic-User}
+\begin{mercClassInfo}
+\textbf{Casting Attribute:} Mind\\
+\textbf{Armor:} None\\
+\textbf{Weapons:}Dagger, Crossbow
+\end{mercClassInfo}
 \end{multicols}
+\subsubsection*{Progression}
 \begin{table}[H]
 
 \begin{center}
+
 \Large
 \rowcolors{2}{gray!30}{greg}
+\centering
+\begin{tabularx}{\textwidth}{Y Y Y Y Y}
 
-\begin{tabular*}{\textwidth}{@{\extracolsep{\fill} } c  c  }
+\hiderowcolors
 
 
-\textbf{
-Roll Result} &\textbf{ Bonus}\\
+ \textbf{
+Level}& \textbf{XP} &\textbf{Hit Dice} &\textbf{Magic} & \textbf {Attack Bonus}\\
 \bottomrule
 \bottomrule
+\showrowcolors
+\centering
+1 &0&  1d4  & 1 & 0\\
 
-3 & -3 \\
+2 &2500&  2d4 & 2 & 0 \\
 
-4-5 & -2 \\
+3 &5000& 3d4 & 3 & 1\\
 
-6-7 & -1 \\
+4 &10000& 4d4 & 4 & 1\\
 
-8-9 & 0 \\
+5 &20000& 5d4 & 5 & 1\\
 
-10-13 & +1 \\
+6 &40000& 6d4 &6 & 2\\
 
-14-16 & +2 \\
+7 &80000& 7d4 & 7 & 2\\
 
-17-18 & +3 \\
-
-\end{tabular*}
+\end{tabularx}
 \end{center}
 \label{table:MagicUser}
 \end{table}
+\begin{multicols}{2}
+\begin{mercHeading}
+Arcane Spellcasting
+\end{mercHeading}
+See  \textbf{pg \pageref{section:GenMagicRules} Magic} for general spellcasting rules
+
+\section*{Magic}
+\label{section:GenMagicRules}
+Every character capable of casting spells or miracles has a \textbf{Magic} or \textbf{Divine} stat. This stat acts as maximum amount of wild magic energy a character can withstand before being unable to cast. That energy is expressed as a temperature gauge (known as \textbf{Wild Magic Gauge}) on a character's sheet with a number of segments equal to the stat. If a spell would exceed this gauge on a failure, the spell cannot be cast.
+\begin{mercHeading}
+{Adding to Wild Magic Gauge}
+\end{mercHeading}
+When a character casts a spell from a given class, they must make an attribute roll of the class's casting attribute. On a failure, the spell fizzles and has either no or reduced effect, and the spell's level is added to the wild magic gauge. On a partial success, the spell executes as normal, but the spell's level is added to the wild magic gauge. On a success, the spell executes as normal. Cantrips are a special type of spell that do not add to the gauge on a partial success.\\
+\textbf{Full Wild Magic Gauge:}
+Once the wild magic gauge is filled, the spell has an additional wild magic effect. This is determined by rolling on the Wild Magic table on pg \pageref{table:WildMagic} or an effect the referee thinks is thematic.
+\end{multicols}
 \end{document}
