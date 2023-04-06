@@ -1,0 +1,235 @@
+\documentclass[18pt]{article}
+
+\usepackage{multicol}
+\usepackage{color}
+\usepackage[many]{tcolorbox}
+\usepackage{lipsum}
+\usepackage{setspace}
+\usepackage{float}
+\usepackage{booktabs}
+\usepackage{listings}
+\usepackage{xcolor,colortbl}
+\usepackage[a4paper, margin=0.5in,footskip=0.5in, bottom=1in]{geometry}
+\tcbuselibrary{listings,breakable}
+\usetikzlibrary{calc}
+
+\definecolor{myblue}{RGB}{0,163,243}
+\definecolor{greg}{RGB}{164,216,216}
+\newcommand{\mhead}[1]{\paragraph{#1}\mbox{}\\\\}
+\usepackage{titlesec}
+\usepackage{lmodern}
+\usepackage{booktabs}
+\titleformat*{\section}{\Huge\bfseries}
+\titleformat*{\subsection}{\LARGE\bfseries}
+\titleformat*{\subsubsection}{\large\bfseries}
+\titleformat*{\paragraph}{\large\bfseries}
+\titleformat*{\subparagraph}{\large\bfseries}
+\tcbset{mystyle/.style={
+  breakable,
+  enhanced,
+  outer arc=0pt,
+  arc=0pt,
+  colframe=greg,
+  colback=greg,
+  attach boxed title to top left,
+  boxed title style={
+    colback=greg,
+    outer arc=0pt,
+    arc=0pt,
+    },
+  title=Example~\thetcbcounter,
+  fonttitle=\sffamily
+  }
+}
+
+
+\newtcolorbox{mercHeading}{
+  width=\columnwidth,
+  fontupper = \huge \sffamily,
+  colback={greg},
+boxsep=5pt,left=0pt,right=0pt,top=0pt,bottom=0pt,
+  frame hidden,
+  boxrule =0pt,
+  arc = 0mm,
+  outer arc =0mm,
+  colupper = black
+}
+
+
+
+
+\title{The Third Age Rules Handbook}
+\author{J. R. Merkel}
+\date{}
+\begin{document}
+\sffamily
+\large
+\frenchspacing
+\singlespacing
+\parskip=0pt
+\parindent=0pt
+\lstset{aboveskip=0pt, belowskip=0pt}
+%Paragraph header on newline
+%\newcommand{\h2}[1]{\paragraph{#1}\mbox{}\\}
+
+
+\maketitle
+\thispagestyle{empty}
+\pagebreak
+\thispagestyle{empty}
+\tableofcontents
+\pagebreak
+ \pagenumbering{arabic}
+\section*{Introduction}
+\addcontentsline{toc}{section}{Introduction}
+\subsection*{Design Goals}
+\begin{itemize}
+	\item Maintain compatibility and tone from Old-school material.
+        \item Revise pain points of B/X
+        \item Incorporate 3 tier of outcomes from pbta
+\end{itemize}
+%%%%%%%%%%%Begin Actual Content%%%%%%%%%%%%%%%
+\begin{multicols}{2}
+\section*{Character}
+\subsection*{Attributes}
+The Third Age RPG uses 5 main stats that define a character's strengths and weaknesses ranging from -3 to +3. 
+
+\begin{mercHeading}
+Body
+\end{mercHeading}
+The measure of physical ability. The primary attribute of Fighting-men.
+
+\begin{itemize}
+	\setlength\itemsep{0em}
+	\item \textbf{Hit Points:} Increases hit points by Body each level (Min 1)
+	\item \textbf{Melee Attack Bonus:} Increases to-hit and damage rolls of melee attacks by Body
+\end{itemize}
+
+\begin{mercHeading}
+Mind
+\end{mercHeading}
+The measure of mental acuity. The primary attribute of Magic-Users.
+
+\begin{itemize}
+\setlength\itemsep{0em}
+	\item \textbf{Languages:} Increase the number of languages known by Mind
+	\item \textbf{Spellcasting:} Increases spellcasting checks by Mind
+\end{itemize}
+
+\begin{mercHeading}
+Spirit
+\end{mercHeading}
+The measure of will and belief. The primary attribute of Clerics
+
+\begin{itemize}
+\setlength\itemsep{0em}
+	\item \textbf{Miracles:} Increases miracle checks by Spirit
+\end{itemize}
+
+\begin{mercHeading}
+Charisma
+\end{mercHeading}
+The measure of personality and charm. The primary attribute of TBD? nothing
+
+\begin{itemize}
+\setlength\itemsep{0em}
+	\item \textbf{Reaction:} Increase reaction roll result by Charisma
+	\item \textbf{Retainers:} Increase max number of retainers and their morale check by Charisma
+\end{itemize}
+
+\begin{mercHeading}
+Dexterity
+\end{mercHeading}
+
+\begin{itemize}
+\setlength\itemsep{0em}
+	\item \textbf{Armor Class:} Increase Armor Class (AC) by Dexterity
+	\item \textbf{Ranged Attack Bonus:} Increases to-hit of ranged attack by Dexterity
+\end{itemize}
+The measure of deftness and agility. The primary attribute of Thieves
+
+\begin{mercHeading}
+Assigning Attributes
+\end{mercHeading}
+
+Roll 3d6 for each of the 5 Attributes in order accoring to the following table. Note, this does produce more powerful characters than traditional OSR stat generation.
+
+
+\begin{table}[H]
+
+\begin{center}
+\Large
+\rowcolors{2}{gray!30}{greg}
+\begin{tabular}{ c  c  }
+
+
+\textbf{
+Roll Result} &\textbf{ Bonus}\\
+\bottomrule
+\bottomrule
+
+3 & -3 \\
+
+4-5 & -2 \\
+
+6-7 & -1 \\
+
+8-9 & 0 \\
+
+10-13 & +1 \\
+
+14-16 & +2 \\
+
+17-18 & +3 \\
+
+\end{tabular}
+\end{center}
+\label{table:RollingAttributes}
+\end{table}
+
+\section*{Class}
+\subsection*{Class List}
+\begin{itemize}
+	\item Magic-User
+	\item Fighting-Man
+	\item Thief
+	\item Cleric
+\end{itemize}
+\section*{Cleric}
+\section*{Thief}
+\section*{Fighting-Man}
+\section*{Magic-User}
+\end{multicols}
+\begin{table}[H]
+
+\begin{center}
+\Large
+\rowcolors{2}{gray!30}{greg}
+
+\begin{tabular*}{\textwidth}{@{\extracolsep{\fill} } c  c  }
+
+
+\textbf{
+Roll Result} &\textbf{ Bonus}\\
+\bottomrule
+\bottomrule
+
+3 & -3 \\
+
+4-5 & -2 \\
+
+6-7 & -1 \\
+
+8-9 & 0 \\
+
+10-13 & +1 \\
+
+14-16 & +2 \\
+
+17-18 & +3 \\
+
+\end{tabular*}
+\end{center}
+\label{table:MagicUser}
+\end{table}
+\end{document}
