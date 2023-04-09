@@ -12,6 +12,10 @@
 \usepackage{array}
 \newcolumntype{P}[1]{>{\centering\arraybackslash}p{#1}}
 \newcolumntype{Y}{>{\centering\arraybackslash}X}
+
+\newcolumntype{b}{>{\centering\arraybackslash}X}
+\newcolumntype{s}{>{\centering\arraybackslash\hsize=.5\hsize}X}
+\newcolumntype{S}{>{\centering\arraybackslash\hsize=.4\hsize}X}
 \usepackage{xcolor,colortbl}
 \usepackage[a4paper, margin=0.5in,footskip=0.5in, bottom=1in]{geometry}
 \tcbuselibrary{listings,breakable}
@@ -76,7 +80,7 @@ boxsep=5pt,left=0pt,right=0pt,top=0pt,bottom=0pt,
 
 
 
-\title{The Third Age Rules Handbook}
+\title{\fontsize{70}{80} \selectfont The Third Age Rules Handbook}
 \author{J. R. Merkel}
 \date{}
 \begin{document}
@@ -111,8 +115,21 @@ boxsep=5pt,left=0pt,right=0pt,top=0pt,bottom=0pt,
 \begin{multicols}{2}
 \section*{Character}
 \addcontentsline{toc}{section}{Character}
+\subsection*{Creating a Character}
+A Third Age Character has 5%TODO
+steps.
+\begin{enumerate}
+	\item Generate attributes \emph{pg. \pageref{label:Attributes}}
+	\item Decide on a class \emph{pg. \pageref{label:Class}}
+	\item Roll hit points and starting gold, then fill out attack bonus, magic/divine, languages, and spells
+	\item Purchase equipment and fill out Armor Class \emph{pg. \pageref{section:Equipment}}
+	\item Create a name and backstory/personality %TODO Personality/Qualities from SR???
+\end{enumerate}
+
+
 \subsection*{Attributes}
 \addcontentsline{toc}{subsection}{Attributes}
+\label{label:Attributes}
 The Third Age RPG uses 5 main stats that define a character's strengths and weaknesses ranging from -3 to +3. 
 
 \begin{mercHeading}
@@ -206,29 +223,104 @@ Roll Result} &\textbf{ Bonus}\\
 \end{tabular}
 \end{center}
 \label{table:RollingAttributes}
+\vspace{-1cm}
 \end{table}
+
+\begin{mercHeading} %TODO General rule section?? when to call for roll
+Attribute Roll
+\end{mercHeading}
+
+An \textbf{Attribute Roll} is 2d6 + attribute. On a result of 6 or less, the roll is a failure. On a result of 7-9, the roll is a partial success. On a result of 10+ the roll is considered a success.\\
+\textbf{Modifying Attribute Rolls} A referee may decide any attribute roll to be easier (add up to +3 to a result) or more difficult (subtract up to 3). \\
+\textbf{Advantage/Disadvantage} Another way to modify rolls is to use advantage best 2 out of 3 d6 or disadvantage worst 2 out of 3 d6.
+
 
 \section*{Class}
 \addcontentsline{toc}{section}{Class}
 \subsection*{Class List}
+\label{label:Class}
 \begin{itemize}
 	\item Magic-User
 	\item Fighting-Man
 	\item Thief
 	\item Cleric
 \end{itemize}
-\section*{Cleric}
-\section*{Thief}
-\section*{Fighting-Man}
-\section*{Magic-User}
-\addcontentsline{toc}{section}{Magic-User}
+
+\end{multicols}
+\section*{Cleric}%%%%%%%%%%%%%%%CLERIC
+
+\begin{multicols}{3}
 \begin{mercClassInfo}
-\textbf{Casting Attribute:} Mind\\
-\textbf{Armor:} None\\
-\textbf{Weapons:}Dagger, Crossbow
+\textbf{Casting Attribute:} Spirit\\
+\textbf{Armor:} All\\
+\textbf{Weapons:} Weapons with Blunt Property
 \end{mercClassInfo}
 \end{multicols}
-\subsubsection*{Progression}
+
+\begin{table}[H]
+
+\begin{center}
+
+\Large
+\rowcolors{2}{greg}{gray!30}%%%TODO why is this backwards
+\centering
+\begin{tabularx}{\textwidth}{S S s S b b}
+
+\hiderowcolors
+
+
+ \textbf{
+Level}& \textbf{XP} &\textbf{Hit Dice} &\textbf{Divine} &  \textbf{Max Miracle Level} & \textbf {Attack Bonus}\\
+\bottomrule
+\bottomrule
+\showrowcolors
+\centering
+1 &0&  1d6  & 1 & 1 & 0\\
+
+2 &2000&  2d6 & 2 & 1 & 1 \\
+
+3 &4000& 3d6 & 3 & 2 &1\\
+
+4 &8000& 4d6 & 4 & 2 & 2\\
+
+5 &16000& 5d6 & 5 & 3 & 2\\
+
+6 &32000& 6d6 &6 & 3 & 3\\
+
+7 &64000& 7d6 & 7 & 4 & 3\\
+
+\end{tabularx}
+\end{center}
+\label{table:Cleric}
+\end{table}
+
+\begin{multicols}{2}%%%Cleric data
+
+\begin{mercHeading}
+Divine Spellcasting
+\end{mercHeading}
+
+See  \textbf{pg \pageref{section:GenMagicRules} Magic} for general spellcasting rules. \\
+\textbf{Miracles Known:} A first-level Cleric knows a number of miracles equal to \textbf{Spirit} (Min 1.) This number is split between 0th level miracles (cantrips) and 1st level miracles. When a magic user gains a level, they learn an additional miracle of a level less than or equal to the max miracle level of the table. \vspace{2pt}\\ 
+\textbf{Miracle Scrolls:}
+A Cleric is able to cast any Miracle scroll (For every level above max miracle level adds -1 to the attribute roll). Additionally, a Cleric can learn a miracle from a scroll after spending 1 day per spell level in prayer.
+
+\begin{mercHeading}
+Turn Undead
+\end{mercHeading}
+A Cleric has a special ability with their holy symbol that can repel or destroy Undead creatures.\\
+TODO TABLE
+
+\end{multicols}
+
+\section*{Thief}%%%%%%%%%%%%%%%%%%%%%THIEF
+\begin{multicols}{3}
+\begin{mercClassInfo}
+\textbf{Casting Attribute:} None\\
+\textbf{Armor:} Light\\
+\textbf{Weapons:} All
+\end{mercClassInfo}
+\end{multicols}
 \begin{table}[H]
 
 \begin{center}
@@ -236,30 +328,155 @@ Roll Result} &\textbf{ Bonus}\\
 \Large
 \rowcolors{2}{gray!30}{greg}
 \centering
-\begin{tabularx}{\textwidth}{Y Y Y Y Y}
+\begin{tabularx}{\textwidth}{s s s b b}
 
 \hiderowcolors
 
 
  \textbf{
-Level}& \textbf{XP} &\textbf{Hit Dice} &\textbf{Magic} & \textbf {Attack Bonus}\\
+Level}& \textbf{XP} &\textbf{Hit Dice} & \textbf {Attack Bonus} & \textbf{Thief Expertise}\\
 \bottomrule
 \bottomrule
 \showrowcolors
 \centering
-1 &0&  1d4  & 1 & 0\\
+1 &0&  1d6  & 1 & 1\\
 
-2 &2500&  2d4 & 2 & 0 \\
+2 &1500&  2d6 & 1 & 1 \\
 
-3 &5000& 3d4 & 3 & 1\\
+3 &3000& 3d6 & 2 & 1\\
 
-4 &10000& 4d4 & 4 & 1\\
+4 &6000& 4d6 & 2 & 2\\
 
-5 &20000& 5d4 & 5 & 1\\
+5 &12000& 5d6 & 3 & 2\\
 
-6 &40000& 6d4 &6 & 2\\
+6 &24000& 6d6 & 3 & 2\\
 
-7 &80000& 7d4 & 7 & 2\\
+7 &48000& 7d6 & 4 & 3\\
+
+\end{tabularx}
+\end{center}
+\label{table:Thief}
+\end{table}
+
+\begin{multicols}{2} %%% Thief Data
+
+\begin{mercHeading}
+Backstab 
+\end{mercHeading}
+When the thief successfully sneaks behind an enemy unseen, they attack with +4 bonus to hit and deal double damage.
+
+\begin{mercHeading}
+Thief Expertise
+\end{mercHeading}
+A thief character adds \textbf{Thief Expertise} to any attribute roll that involves the following
+\begin{itemize}
+	\setlength\itemsep{0em}
+	\item Lockpick
+	\item Hiding
+	\item Moving Silently
+	\item Climbing
+	\item Pickpocketing
+	
+\end{itemize}
+
+\end{multicols}
+
+\section*{Fighting-Man}%%%%%%%%%%%%%%%%%%%%Fighting-Man
+\begin{multicols}{3}
+\begin{mercClassInfo}
+\textbf{Casting Attribute:} None\\
+\textbf{Armor:} All\\
+\textbf{Weapons:} All
+\end{mercClassInfo}
+\end{multicols}
+
+\subsubsection*{Level Progression}
+\vspace{-10pt}
+
+\begin{table}[H]
+
+\begin{center}
+
+\Large
+\rowcolors{2}{gray!30}{greg}
+\centering
+\begin{tabularx}{\textwidth}{s s s s}
+
+\hiderowcolors
+
+
+ \textbf{
+Level}& \textbf{XP} &\textbf{Hit Dice} & \textbf {Attack Bonus}\\
+\bottomrule
+\bottomrule
+\showrowcolors
+\centering
+1 &0&  1d8  & 1 \\
+
+2 &2000&  2d8 & 2  \\
+
+3 &4000& 3d8 & 3 \\
+
+4 &8000& 4d8 & 4 \\
+
+5 &16000& 5d8 & 5 \\
+
+6 &32000& 6d8 &6 \\
+
+7 &64000& 7d8 & 7 \\
+
+\end{tabularx}
+\end{center}
+\label{table:Fighter}
+\end{table}
+
+\begin{multicols}{2}
+You're a chad who doesn't need abilities %%%TODO WHAT IS A FIGHTER
+\end{multicols}
+
+\section*{Magic-User}%%%%%%%%%%%%%%%%%MAGIC USER
+\addcontentsline{toc}{section}{Magic-User}
+\begin{multicols}{3}
+\begin{mercClassInfo}
+\textbf{Casting Attribute:} Mind\\
+\textbf{Armor:} None\\
+\textbf{Weapons:} Dagger, Crossbow
+\end{mercClassInfo}
+\end{multicols}
+\subsubsection*{Level Progression}
+\vspace{-10pt}
+
+\begin{table}[H]
+
+\begin{center}
+
+\Large
+\rowcolors{2}{gray!30}{greg}
+\centering
+\begin{tabularx}{\textwidth}{s s s s b b}
+
+\hiderowcolors
+
+
+ \textbf{
+Level}& \textbf{XP} &\textbf{Hit Dice} &\textbf{Magic} &  \textbf{Max Spell Level} & \textbf {Attack Bonus}\\
+\bottomrule
+\bottomrule
+\showrowcolors
+\centering
+1 &0&  1d4  & 1 & 1 & 0\\
+
+2 &2500&  2d4 & 2 & 1 & 0 \\
+
+3 &5000& 3d4 & 3 & 2 &1\\
+
+4 &10000& 4d4 & 4 & 2 & 1\\
+
+5 &20000& 5d4 & 5 & 3 & 1\\
+
+6 &40000& 6d4 &6 & 3 & 2\\
+
+7 &80000& 7d4 & 7 & 4 & 2\\
 
 \end{tabularx}
 \end{center}
@@ -269,16 +486,64 @@ Level}& \textbf{XP} &\textbf{Hit Dice} &\textbf{Magic} & \textbf {Attack Bonus}\
 \begin{mercHeading}
 Arcane Spellcasting
 \end{mercHeading}
-See  \textbf{pg \pageref{section:GenMagicRules} Magic} for general spellcasting rules
+See  \textbf{pg \pageref{section:GenMagicRules} Magic} for general spellcasting rules. \\
+\textbf{Spells Known:} A first-level magic user knows a number of spells equal to \textbf{Mind} (Min 1.) This number is split between 0th level spells (cantrips) and 1st level spells. When a magic user gains a level, they learn an additional spell of a level less than or equal to the max spell level of the table. \vspace{2pt}\\ 
+\textbf{Spell Scrolls:}
+A magic user is able to cast any spell scroll. Additionally, a magic user can learn a spell from a scroll after spending 1 day per spell level in study.\\
 
+\section*{General}
+TODO
+\begin{mercHeading}
+Multiclassing
+\end{mercHeading}
+\section*{Encounters}
+TODO
+\begin{mercHeading}
+Reaction Rolls
+\end{mercHeading}
+\section*{Dungeon}
+TODO
+\begin{mercHeading}
+Dungeon Turn
+\end{mercHeading}
+\begin{mercHeading}
+Random Encounters
+\end{mercHeading}
+\section*{Combat}
+TODO
+\begin{mercHeading}
+Initiative 
+\end{mercHeading}
+\begin{mercHeading}
+Movement
+\end{mercHeading}
+\begin{mercHeading}
+Attack Rolls
+\end{mercHeading}
 \section*{Magic}
 \label{section:GenMagicRules}
 Every character capable of casting spells or miracles has a \textbf{Magic} or \textbf{Divine} stat. This stat acts as maximum amount of wild magic energy a character can withstand before being unable to cast. That energy is expressed as a temperature gauge (known as \textbf{Wild Magic Gauge}) on a character's sheet with a number of segments equal to the stat. If a spell would exceed this gauge on a failure, the spell cannot be cast.
 \begin{mercHeading}
 {Adding to Wild Magic Gauge}
 \end{mercHeading}
-When a character casts a spell from a given class, they must make an attribute roll of the class's casting attribute. On a failure, the spell fizzles and has either no or reduced effect, and the spell's level is added to the wild magic gauge. On a partial success, the spell executes as normal, but the spell's level is added to the wild magic gauge. On a success, the spell executes as normal. Cantrips are a special type of spell that do not add to the gauge on a partial success.\\
-\textbf{Full Wild Magic Gauge:}
+When a character casts a spell from a given class, they must make an attribute roll of the class's casting attribute. On a failure, the spell fizzles and has either no or reduced effect, and the spell's level is added to the wild magic gauge. On a partial success, the spell executes as normal, but the spell's level is added to the wild magic gauge. On a success, the spell executes as normal. Cantrips are a special type of spell that do not add to the gauge on a partial success.\vspace{2pt}\\
+  \textbf{Full Wild Magic Gauge:}
 Once the wild magic gauge is filled, the spell has an additional wild magic effect. This is determined by rolling on the Wild Magic table on pg \pageref{table:WildMagic} or an effect the referee thinks is thematic.
+\begin{mercHeading}
+Concentration
+\end{mercHeading}
+Spells that specify concentration or require multiple rounds to cast, uses the caster's action every round until the spell ends or is cast. When a caster is hit while concentrating, they must make a \textbf{Body} attribute roll to maintain the spell. On a failure, the spell fizzles and ends. On a partial success, the caster can choose to roll on the wild magic table or end the spell. On a success, nothing happens.
+
+\section*{Equipment}
+\label{section:Equipment}
 \end{multicols}
+\appendix
+\section*{Terms}
+\begin{tabular}{|c |c|}
+\hline
+AC & Armor Class.... \\
+\hline
+TODO & TODO \\
+\hline
+\end{tabular}
 \end{document}
