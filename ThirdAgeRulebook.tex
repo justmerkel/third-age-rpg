@@ -241,9 +241,12 @@ Attribute Roll
 
 An \textbf{Attribute Roll} is 2d6 + attribute. On a result of 6 or less, the roll is a failure. On a result of 7-9, the roll is a partial success. On a result of 10+ the roll is considered a success.\\
 \textbf{Modifying Attribute Rolls} A referee may decide any attribute roll to be easier (add up to +3 to a result) or more difficult (subtract up to 3). \\
-\textbf{Advantage/Disadvantage} Another way to modify rolls is to use advantage best 2 out of 3 d6 or disadvantage worst 2 out of 3 d6.
+\textbf{Advantage/Disadvantage} Another way to modify rolls is to use advantage best 2 out of 3 d6 or disadvantage worst 2 out of 3 d6.\\
+\textbf{Saving Throw} A saving throw is a special type of attribute roll to avoid effects.
 \subsection*{Other Stats}
 There are other stats on the character sheet that are dependent on the class.
+
+
 
 \begin{mercHeading}
 Health and Hit Die
@@ -814,6 +817,67 @@ Spells that specify concentration or require multiple rounds to cast, uses the c
 \begin{multicols}{2}
 \section*{Spells}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%Spells
 \addcontentsline{toc}{section}{Spells}
+\subsection*{Cantrips (Spell Power 0)}
+\subsubsection*{Detect Magic}
+\subsubsection*{Presti}
+\subsubsection*{}
+
+
+\subsection*{Spell Power 1}
+\subsubsection*{Charm}
+\begin{mercClassInfo}
+\textbf{Save Attribute:} Charisma\\
+\textbf{Casting Time:} 1 Round\\
+\textbf{Range:} 60ft\\
+\textbf{Duration:} Indefinite*
+\end{mercClassInfo}
+The caster implants a memory of friendship into the target creature. A single target per \textbf{Power} of spell is affected. A target may repeat the saving throw every week.\\
+\textbf{Restriction:} Undead and Humanoid targets only. The maximum hit die affected by this spell is 4.\\
+\textbf{Wild Magic:} Caster becomes charmed by a nearby creature at random.
+
+\begin{table}[H]
+\begin{center}
+\large
+\rowcolors{2}{gray!30}{greg}
+\begin{tabularx}{\textwidth}{X X}
+\hiderowcolors
+ \textbf{Partial Success} &\textbf{Failure}\\
+\bottomrule
+\bottomrule
+\showrowcolors
+\cellcolor{gray!30} \textbf{Friend:} The target regards you as a friend and will come to the caster's defense. & \textbf{Command:} The target will take commands from the caster assuming they share a language. \\
+\end{tabularx}
+\end{center}
+\label{table:Charm Person}
+\end{table}
+
+\subsubsection*{Sleep}
+\begin{mercClassInfo}
+\textbf{Save Attribute:} Spirit\\
+\textbf{Casting Time:} 1 Round\\
+\textbf{Range:} 120ft\\
+\textbf{Duration:} 10 turns
+\end{mercClassInfo}
+The caster causes affected creatures to fall into a magical slumber. This spell affects 1d6 hit dice of creatures per spell power.\\
+\textbf{Restriction:} Cannot affect creatures of hit die above 4
+\textbf{Wild Magic:} Caster falls asleep for 24 hours.
+\begin{table}[H]
+\begin{center}
+\large
+\rowcolors{2}{gray!30}{greg}
+\begin{tabularx}{\textwidth}{X X}
+\hiderowcolors
+ \textbf{Partial Success} &\textbf{Failure}\\
+\bottomrule
+\bottomrule
+\showrowcolors
+\cellcolor{gray!30} \textbf{Drowsy:} -1 on attacks and perception rolls& \textbf{Asleep:} The target is asleep and may be executed using a bladed weapon  \\
+\end{tabularx}
+\end{center}
+\label{table:Sleep}
+\end{table}
+
+
 \section*{Miracles}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%Miracles
 \addcontentsline{toc}{section}{Miracles}
 \end{multicols}
@@ -885,6 +949,7 @@ Sword & 1d8 & 10 & \\
 \end{center}
 \label{table:Weapons}
 \end{table}%%%%%%%%%%%%%%End Weapon
+
 \begin{multicols}{2}
 \begin{mercHeading}
 Properties
@@ -905,7 +970,50 @@ Properties
 Special Magic Weapon Rule
 \end{mercHeading}
 A weapon with \textbf{Two-Hand} property multiples magic damage bonus by 2. One hand free adds to attack roll.
+
+\end{multicols}
+\subsection*{Gear}%%%%%%%%%%%Gear
+\addcontentsline{toc}{subsection}{Gear}
+\begin{table}[H]
+
+\begin{center}
+
+\large
+\rowcolors{2}{gray!30}{greg}
+
+\begin{tabularx}{\textwidth}{X b X}
+
+\hiderowcolors
+
+
+\centering \textbf{
+Item}& \textbf{Cost} &\multicolumn{1}{c}{\textbf{Description}}\\
+\bottomrule
+\bottomrule
+\showrowcolors
+
+Crowbar & 10 & \\
+Grappling Hook & 25 & \\
+Holy Water & 25 & 1 Vial\\
+Mirror & 5 & Hand-sized\\
+Oil & 2 & 1 Flask\\
+Pole & 1 & 10ft Wooden Stick\\
+Ration & 5 & 1 week\\
+Rope & 1 & 50ft\\
+Lockpick Set & 25 & \\
+Torch & 1 & 6\\
+\end{tabularx}
+\end{center}
+\label{table:Gear}
+\end{table}%%%%%%%%%%%%%%End Gear
+\begin{multicols}{2}
+\begin{mercHeading}
+Inventory Capacity
+\end{mercHeading}
+Every character can carry a number of items equal to 10 + their \textbf{Body}.
 \subsection*{Retainers}
+
+
 \end{multicols}
 \appendix
 \section*{Terms}
