@@ -10,7 +10,9 @@
 \usepackage{listings}
 \usepackage{tabularx}
 \usepackage{array}
-
+\usepackage[T1]{fontenc}
+\usepackage{luacode}
+\usepackage[T1]{fontenc}
 \newcolumntype{P}[1]{>{\centering\arraybackslash}p{#1}}
 \newcolumntype{Y}{>{\centering\arraybackslash}X}
 
@@ -119,17 +121,82 @@ boxsep=5pt,left=0pt,right=0pt,top=0pt,bottom=0pt,
         \item Revise pain points of B/X (1 in 6, thief, whiffing, etc)
         \item Incorporate 3 tier of outcomes from pbta
 \end{itemize}
+
 %%%%%%%%%%%Begin Actual Content%%%%%%%%%%%%%%%
+
+
+\begin{luacode}
+-- we need the LuaFileSystem
+-- library
+require 'lfs'
+
+-- builds path according to the system
+-- path separator, as I used in this answer:
+-- http://tex.stackexchange.com/a/48241/3094
+function buildPath(...)
+
+    -- get the system path separator
+    local pathseparator = package.config:sub(1,1)
+
+    -- get the arguments
+    local elements = {...}
+
+    -- return the elements with the path separator
+    return table.concat(elements, pathseparator)
+end
+
+
+-- get the current path plus the file name.
+function getPath(filename)
+
+    -- print the input command. According to the
+    -- documentation, if -2 is used, then the strings
+    -- are read as if the result of detokenize: all
+    -- characters have catcode 12 except space, which
+    -- has catcode 10.
+    tex.print(-2, buildPath(lfs.currentdir(), filename))
+end
+
+function dirtree(dir, texPrefix)
+  if string.sub(dir, -1) == "/" then
+    dir=string.sub(dir, 1, -2)
+  end
+
+  local function yieldtree(dir, texPrefix)
+    for entry in lfs.dir(dir) do
+      if not entry:match("^%.") then
+        entryPath=dir.."/"..entry
+          if (not lfs.isdir(entryPath)) then
+            coroutine.yield(texPrefix.."/"..entry)
+          end
+      end
+    end
+  end
+
+  return coroutine.wrap(function() yieldtree(dir, texPrefix) end)
+end
+
+
+function inputAllPath(...)
+    if(lfs.isdir(buildPath(lfs.currentdir(), ...))) then
+	--tex.sprint("OK GOT IT")
+        for i in dirtree(buildPath(lfs.currentdir(), ...), ...) do
+           --tex.sprint("FFFFRING")
+           tex.sprint("\\input " ..  i .. " ")
+        end
+    else
+        tex.sprint({...}, "not a dir")
+    end
+end
+\end{luacode}
+
+\newcommand\fullpath[1]{\luadirect{getPath(\luastring{#1})}}
+\newcommand\inputAll[1]{\luadirect{inputAllPath(\luastring{#1})}}
+
+
 \input{sections/Character.tex}
 
-\input{sections/classes/Cleric.tex}
-
-\input{sections/classes/Thief.tex}
-
-
-\input{sections/classes/Fighting-Man.tex}
-
-\input{sections/classes/Magic-User.tex}
+\inputAll{sections/classes}
 
 \input{sections/General.tex}
 
